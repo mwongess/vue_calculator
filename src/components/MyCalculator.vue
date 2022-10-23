@@ -1,9 +1,9 @@
 <template>
   <div class="calculator">
     <div class="output">{{current || '0'}}</div>
-    <div @click="append()" class="btn">AC</div>
-    <div @click="append()" class="btn">+/-</div>
-    <div @click="append()" class="btn">%</div>
+    <div @click="clear" class="btn">AC</div>
+    <div @click="sign" class="btn">+/-</div>
+    <div @click="percent" class="btn">%</div>
     <div @click="append()" class="btn operator">÷</div>
     <div @click="append()" class="btn">7</div>
     <div @click="append()" class="btn">8</div>
@@ -29,14 +29,18 @@ export default {
  
   data(){
     return{
-      current: ''
+      current: '123'
     }
   },
   methods: {
-    clear(){},
-    
+    clear(){
+      this.current = ""
+    },
     sign(){
-
+      this.current = this.current.charAt(0) === '-' ? this.current.slice(1) : `-${this.current}`
+    },
+    percent(){
+      this.current = `${parseFloat(this.current) / 100}`
     },
     append(){
 
