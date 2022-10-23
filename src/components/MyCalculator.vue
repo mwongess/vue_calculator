@@ -1,6 +1,6 @@
 <template>
   <div class="calculator">
-    <div class="output">7654</div>
+    <div class="output">{{}}</div>
     <div class="btn">AC</div>
     <div class="btn">+/-</div>
     <div class="btn">%</div>
@@ -26,14 +26,18 @@
 <script>
 export default {
   name: 'MyCalculator',
-  props: {
-    msg: String
+ 
+  data(){
+    return{
+      current: ''
+    }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
   .calculator{
     display: grid;
     grid-template-columns: auto auto auto auto;
