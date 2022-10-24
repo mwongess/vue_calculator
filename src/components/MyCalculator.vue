@@ -1,10 +1,10 @@
 <template>
   <div class="calculator">
-    <div class="output">{{current || '0'}}</div>
+    <div class="output">{{ current || "0" }}</div>
     <div @click="clear" class="btn">AC</div>
     <div @click="sign" class="btn">+/-</div>
     <div @click="percent" class="btn">%</div>
-    <div @click="divide()" class="btn operator">÷</div>
+    <div @click="divide" class="btn operator">÷</div>
     <div @click="append(7)" class="btn">7</div>
     <div @click="append(8)" class="btn">8</div>
     <div @click="append(9)" class="btn">9</div>
@@ -25,72 +25,87 @@
 
 <script>
 export default {
-  name: 'MyCalculator',
- 
-  data(){
-    return{
-      current: '123'
-    }
+  name: "MyCalculator",
+
+  data() {
+    return {
+      current: "123",
+      operator: null,
+    };
   },
   methods: {
-    clear(){
-      this.current = ""
+    clear() {
+      this.current = "";
     },
-    sign(){
-      this.current = this.current.charAt(0) === '-' ? this.current.slice(1) : `-${this.current}`
+    sign() {
+      this.current =
+        this.current.charAt(0) === "-"
+          ? this.current.slice(1)
+          : `-${this.current}`;
     },
-    percent(){
-      this.current = `${parseFloat(this.current) / 100}`
+    percent() {
+      this.current = `${parseFloat(this.current) / 100}`;
     },
-    append(number){
-      this.current = `${this.current}${number}`
+    append(number) {
+      this.current = `${this.current}${number}`;
     },
-    times(){
-
+    times() {
+      this.operator = (a, b) => {
+        a * b;
+      };
     },
-    divide(){
-
+    divide() {
+      this.operator = (a, b) => {
+        a / b;
+      };
     },
-    minus(){},
-    dot(){
-      if(this.current.indexOf('.') === -1 ){
-        this.append(".")
+    minus() {
+      this.operator = (a, b) => {
+        a - b;
+      };
+    },
+    add() {
+      this.operator = (a, b) => {
+        a + b;
+      };
+    },
+    dot() {
+      if (this.current.indexOf(".") === -1) {
+        this.append(".");
       }
-    }
-    
-  }
-}
+    },
+    equal() {},
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-  .calculator{
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-auto-rows: minmax(50px,auto );
-    font-size: 20px;
-    
-  }
-  .output{
-    grid-column: 1/5;
-    background-color: #333;
-    color: #fff;
-    text-align: right;
-    padding: 1rem;
-  }
-  .zero{
-    grid-column: 1/3;
-  }
-  .btn{
-    background-color: #f2f2f2;
-    border: 1px solid #999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .operator{
-    background-color: orange;
-    color: #fff;
-  }
+.calculator {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-auto-rows: minmax(50px, auto);
+  font-size: 20px;
+}
+.output {
+  grid-column: 1/5;
+  background-color: #333;
+  color: #fff;
+  text-align: right;
+  padding: 1rem;
+}
+.zero {
+  grid-column: 1/3;
+}
+.btn {
+  background-color: #f2f2f2;
+  border: 1px solid #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.operator {
+  background-color: orange;
+  color: #fff;
+}
 </style>
