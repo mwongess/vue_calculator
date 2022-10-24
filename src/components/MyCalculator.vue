@@ -29,8 +29,10 @@ export default {
 
   data() {
     return {
+      previous: null,
       current: "123",
       operator: null,
+      operatorClicked: false
     };
   },
   methods: {
