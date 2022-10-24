@@ -91,13 +91,15 @@ export default {
 .calculator {
   margin: 0 auto;
   width: 400px;
-  font-size: 40px;
+  font-size: 20px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: minmax(50px, auto);
 }
 
 .display {
+  text-align: right;
+  padding: 1rem;
   grid-column: 1 / 5;
   background-color: #333;
   color: white;
@@ -108,6 +110,9 @@ export default {
 }
 
 .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #F2F2F2;
   border: 1px solid #999;
 }
